@@ -21,15 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		DE1028CD25BDD1AD00843F8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1028CC25BDD1AD00843F8D /* AppDelegate.swift */; };
-		DE1028D125BDD1B000843F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1028D025BDD1B000843F8D /* Assets.xcassets */; };
-		DE1028D425BDD1B000843F8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1028D325BDD1B000843F8D /* Preview Assets.xcassets */; };
-		DE1028D725BDD1B000843F8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1028D525BDD1B000843F8D /* Main.storyboard */; };
-		DE1028E425BDD1F100843F8D /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1028E225BDD1F000843F8D /* Chord.swift */; };
-		DE1028E525BDD1F100843F8D /* chords.json in Resources */ = {isa = PBXBuildFile; fileRef = DE1028E325BDD1F100843F8D /* chords.json */; };
-		DE1028EC25BDD1FF00843F8D /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1028EB25BDD1FF00843F8D /* ChordView.swift */; };
-		DE1028F725BDD22F00843F8D /* Fretboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Fretboard.swift */; };
-		OBJ_25 /* Fretboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Fretboard.swift */; };
+		OBJ_25 /* FretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* FretView.swift */; };
 		OBJ_32 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_43 /* FretboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* FretboardTests.swift */; };
 		OBJ_44 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -55,15 +47,6 @@
 
 /* Begin PBXFileReference section */
 		DE1028CA25BDD1AD00843F8D /* FretboardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FretboardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE1028CC25BDD1AD00843F8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE1028D025BDD1B000843F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DE1028D325BDD1B000843F8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DE1028D625BDD1B000843F8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DE1028D825BDD1B000843F8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE1028D925BDD1B000843F8D /* FretboardDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FretboardDemo.entitlements; sourceTree = "<group>"; };
-		DE1028E225BDD1F000843F8D /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
-		DE1028E325BDD1F100843F8D /* chords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chords.json; sourceTree = "<group>"; };
-		DE1028EB25BDD1FF00843F8D /* ChordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 		"Fretboard::Fretboard::Product" /* Fretboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fretboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Fretboard::FretboardTests::Product" /* FretboardTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = FretboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* FretboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretboardTests.swift; sourceTree = "<group>"; };
@@ -72,7 +55,7 @@
 		OBJ_18 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		OBJ_19 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* Fretboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fretboard.swift; sourceTree = "<group>"; };
+		OBJ_9 /* FretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,30 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DE1028CB25BDD1AD00843F8D /* FretboardDemo */ = {
-			isa = PBXGroup;
-			children = (
-				DE1028CC25BDD1AD00843F8D /* AppDelegate.swift */,
-				DE1028EB25BDD1FF00843F8D /* ChordView.swift */,
-				DE1028E225BDD1F000843F8D /* Chord.swift */,
-				DE1028E325BDD1F100843F8D /* chords.json */,
-				DE1028D025BDD1B000843F8D /* Assets.xcassets */,
-				DE1028D525BDD1B000843F8D /* Main.storyboard */,
-				DE1028D825BDD1B000843F8D /* Info.plist */,
-				DE1028D925BDD1B000843F8D /* FretboardDemo.entitlements */,
-				DE1028D225BDD1B000843F8D /* Preview Content */,
-			);
-			path = FretboardDemo;
-			sourceTree = "<group>";
-		};
-		DE1028D225BDD1B000843F8D /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				DE1028D325BDD1B000843F8D /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +118,6 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
-				DE1028CB25BDD1AD00843F8D /* FretboardDemo */,
 				OBJ_14 /* Products */,
 				OBJ_17 /* LICENSE */,
 				OBJ_18 /* screenshot.png */,
@@ -179,7 +137,7 @@
 		OBJ_8 /* Fretboard */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Fretboard.swift */,
+				OBJ_9 /* FretView.swift */,
 			);
 			name = Fretboard;
 			path = Sources/Fretboard;
@@ -295,10 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE1028D725BDD1B000843F8D /* Main.storyboard in Resources */,
-				DE1028D425BDD1B000843F8D /* Preview Assets.xcassets in Resources */,
-				DE1028E525BDD1F100843F8D /* chords.json in Resources */,
-				DE1028D125BDD1B000843F8D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,10 +263,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE1028E425BDD1F100843F8D /* Chord.swift in Sources */,
-				DE1028EC25BDD1FF00843F8D /* ChordView.swift in Sources */,
-				DE1028CD25BDD1AD00843F8D /* AppDelegate.swift in Sources */,
-				DE1028F725BDD22F00843F8D /* Fretboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_25 /* Fretboard.swift in Sources */,
+				OBJ_25 /* FretView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,17 +305,6 @@
 			targetProxy = DE1028C025BDCF8800843F8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DE1028D525BDD1B000843F8D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE1028D625BDD1B000843F8D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DE1028DA25BDD1B000843F8D /* Debug */ = {
