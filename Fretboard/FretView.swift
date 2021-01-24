@@ -46,33 +46,43 @@ struct FretView: View {
                 }
                 
                 ForEach(0..<strings.count, id: \.self) { index in
-                    ZStack {
-                        VStack {
-                            if strings[index] > 0 {
-                                Color.black
-                                    .clipShape(Circle())
-                                    .padding(min(proxy.size.width, proxy.size.height)*0.02)
-                            } else if strings[index] < 0 {
-                                Text("x")
-                                    .font(.system(size: proxy.size.width/8))
-                            }
+                    let shouldShowFingers = (fingers[index] > 0 && barres.isEmpty) || (!barres.isEmpty && fingers[index] > barres.first!)
+
+                    Group {
+                        if shouldShowFingers {
+                            Color.black
+                                .clipShape(Circle())
+                                .padding(min(proxy.size.width, proxy.size.height)*0.02)
+                        } else if strings[index] < 0 {
+                            Text("x")
+                                .font(.system(size: proxy.size.width/8))
                         }
-                        .frame(width: proxy.size.width/5, height: proxy.size.height/5)
-                        .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5)))
-                    
-                        VStack {
-                            if (fingers[index] > 0 && barres.isEmpty) ||
-                                (!barres.isEmpty && fingers[index] > barres.first!) {
-                                Text("\(fingers[index])")
-                                    .font(.system(size: proxy.size.width/8))
-                            }
-                        }
-                        .frame(width: proxy.size.width/5, height: proxy.size.height/5)
-                        .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5), isNumber: true))
                     }
+                    .frame(width: proxy.size.width/5, height: proxy.size.height/5)
+                    .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5)))
+                
+                    Group {
+                        if shouldShowFingers {
+                            Text("\(fingers[index])")
+                                .font(.system(size: proxy.size.width/8))
+                        }
+                    }
+                    .frame(width: proxy.size.width/5, height: proxy.size.height/5)
+                    .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5), isNumber: true))
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
+            .overlay(
+                Group {
+                    if let bar = barres.first {
+                        let gridHeight = proxy.size.height/5
+                        Color.black
+                            .clipShape(Capsule())
+                            .frame(width: proxy.size.width*1.3, height: proxy.size.height*0.08)
+                            .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
+                    }
+                }
+            )
         }
         
     }
