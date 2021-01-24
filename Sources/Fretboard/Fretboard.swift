@@ -1,5 +1,5 @@
 //
-//  FretView.swift
+//  Fretboard.swift
 //  Fretboard
 //
 //  Created by Huong Do on 23/01/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FretView: View {
+struct Fretboard: View {
     let fingers: [Int]
     let strings: [Int]
     let barres: [Int]
@@ -20,8 +20,8 @@ struct FretView: View {
                 
                 VStack(spacing: gridHeight) {
                     ForEach(0..<strings.count, id: \.self) { index in
-                        let stringColor: Color = (index > 0 && index < strings.count) ? .gray : .black
-                        let overlayColor: Color = (index == 0) ? .black : .clear
+                        let stringColor: Color = (index > 0 && index < strings.count) ? .gray : .primary
+                        let overlayColor: Color = (index == 0) ? .primary : .clear
                         stringColor
                             .frame(width: gridWidth*CGFloat(strings.count-1) + CGFloat(strings.count), height: 1)
                             .overlay(
@@ -35,7 +35,7 @@ struct FretView: View {
                     ForEach(strings, id: \.self) { s in
                         Group {
                             if s >= 0 {
-                                Color.black
+                                Color.primary
                             } else {
                                 Color.gray
                             }
@@ -49,11 +49,12 @@ struct FretView: View {
 
                     Group {
                         if shouldShowFingers {
-                            Color.black
+                            Color.primary
                                 .clipShape(Circle())
                                 .padding(gridWidth*0.1)
                         } else if strings[index] < 0 {
                             Text("x")
+                                .foregroundColor(.primary)
                                 .font(.system(size: proxy.size.width/10))
                         }
                     }
@@ -63,6 +64,7 @@ struct FretView: View {
                     Group {
                         if shouldShowFingers {
                             Text("\(fingers[index])")
+                                .foregroundColor(.primary)
                                 .font(.system(size: proxy.size.width/10))
                         }
                     }
@@ -72,7 +74,7 @@ struct FretView: View {
                 
                 Group {
                     if let bar = barres.first {
-                        Color.black
+                        Color.primary
                             .clipShape(Capsule())
                             .frame(width: proxy.size.width*0.9, height: gridHeight*0.3)
                             .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
@@ -99,9 +101,9 @@ struct FretView: View {
     }
 }
 
-struct FretView_Previews: PreviewProvider {
+struct Fretboard_Previews: PreviewProvider {
     static var previews: some View {
-        FretView(fingers: [1, 3, 4, 2, 1, 1],
+        Fretboard(fingers: [1, 3, 4, 2, 1, 1],
                  strings: [1, 3, 3, 2, 1, 1],
                  barres: [1])
             .frame(width: 100, height: 200)
