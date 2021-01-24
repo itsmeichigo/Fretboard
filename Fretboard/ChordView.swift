@@ -16,7 +16,7 @@ struct ChordView: View {
             FretView(fingers: chord.fingers,
                      strings: chord.frets,
                      barres: chord.barres)
-                .frame(width: 200, height: 200)
+                .frame(width: 100, height: 200)
             if chord.baseFret > 1 {
                 Text("Fret \(chord.baseFret)")
                     .font(.headline)
