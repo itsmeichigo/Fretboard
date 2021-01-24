@@ -74,8 +74,9 @@ struct FretView: View {
                         let gridHeight = proxy.size.height/5
                         Color.black
                             .clipShape(Capsule())
-                            .frame(width: proxy.size.width*1.2, height: min(proxy.size.width, proxy.size.height)*0.1)
+                            .frame(width: proxy.size.width*1.2, height: proxy.size.height*0.08)
                             .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
+                            
                     }
                 }
             )
