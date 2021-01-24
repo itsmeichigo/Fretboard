@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE1028B025BD175B00843F8D /* chords.json in Resources */ = {isa = PBXBuildFile; fileRef = DE1028AF25BD175B00843F8D /* chords.json */; };
+		DE1028B325BD183600843F8D /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1028B225BD183600843F8D /* ChordView.swift */; };
 		DE2349CB25BC58720072D035 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349CA25BC58720072D035 /* AppDelegate.swift */; };
 		DE2349CD25BC58720072D035 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349CC25BC58720072D035 /* SceneDelegate.swift */; };
 		DE2349CF25BC58720072D035 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349CE25BC58720072D035 /* ContentView.swift */; };
@@ -14,10 +16,12 @@
 		DE2349D425BC58760072D035 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2349D325BC58760072D035 /* Preview Assets.xcassets */; };
 		DE2349D725BC58760072D035 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2349D525BC58760072D035 /* LaunchScreen.storyboard */; };
 		DE2349E025BC59E20072D035 /* FretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349DF25BC59E20072D035 /* FretView.swift */; };
-		DE2349E325BC70A80072D035 /* Chords.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349E225BC70A80072D035 /* Chords.swift */; };
+		DE2349E325BC70A80072D035 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2349E225BC70A80072D035 /* Chord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE1028AF25BD175B00843F8D /* chords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chords.json; sourceTree = "<group>"; };
+		DE1028B225BD183600843F8D /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 		DE2349C725BC58720072D035 /* Fretboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fretboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2349CA25BC58720072D035 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2349CC25BC58720072D035 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +31,7 @@
 		DE2349D625BC58760072D035 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE2349D825BC58760072D035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE2349DF25BC59E20072D035 /* FretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretView.swift; sourceTree = "<group>"; };
-		DE2349E225BC70A80072D035 /* Chords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chords.swift; sourceTree = "<group>"; };
+		DE2349E225BC70A80072D035 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,10 @@
 				DE2349CA25BC58720072D035 /* AppDelegate.swift */,
 				DE2349CC25BC58720072D035 /* SceneDelegate.swift */,
 				DE2349CE25BC58720072D035 /* ContentView.swift */,
+				DE1028B225BD183600843F8D /* ChordView.swift */,
 				DE2349DF25BC59E20072D035 /* FretView.swift */,
-				DE2349E225BC70A80072D035 /* Chords.swift */,
+				DE2349E225BC70A80072D035 /* Chord.swift */,
+				DE1028AF25BD175B00843F8D /* chords.json */,
 				DE2349D025BC58760072D035 /* Assets.xcassets */,
 				DE2349D525BC58760072D035 /* LaunchScreen.storyboard */,
 				DE2349D825BC58760072D035 /* Info.plist */,
@@ -140,6 +146,7 @@
 			files = (
 				DE2349D725BC58760072D035 /* LaunchScreen.storyboard in Resources */,
 				DE2349D425BC58760072D035 /* Preview Assets.xcassets in Resources */,
+				DE1028B025BD175B00843F8D /* chords.json in Resources */,
 				DE2349D125BC58760072D035 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +159,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2349CB25BC58720072D035 /* AppDelegate.swift in Sources */,
-				DE2349E325BC70A80072D035 /* Chords.swift in Sources */,
+				DE1028B325BD183600843F8D /* ChordView.swift in Sources */,
+				DE2349E325BC70A80072D035 /* Chord.swift in Sources */,
 				DE2349E025BC59E20072D035 /* FretView.swift in Sources */,
 				DE2349CD25BC58720072D035 /* SceneDelegate.swift in Sources */,
 				DE2349CF25BC58720072D035 /* ContentView.swift in Sources */,
