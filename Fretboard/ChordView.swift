@@ -10,7 +10,7 @@ import SwiftUI
 struct ChordView: View {
     let chord: Chord
     var body: some View {
-        VStack(spacing: 50) {
+        VStack(spacing: 40) {
             Text(chord.chordName)
                 .font(.largeTitle)
             FretView(fingers: chord.fingers,

@@ -17,17 +17,13 @@ struct FretView: View {
             ZStack {
                 VStack(spacing: proxy.size.height/5) {
                     ForEach(0...5, id: \.self) { index in
-                        Color.black
+                        let stringColor: Color = (index > 0 && index < 5) ? .gray : .black
+                        let overlayColor: Color = (index == 0) ? .black : .clear
+                        stringColor
                             .frame(height: 1)
                             .overlay(
-                                Group {
-                                    if index == 0 {
-                                        Color.black
-                                            .frame(height: 3)
-                                    } else {
-                                        Color.clear
-                                    }
-                                }
+                                overlayColor
+                                    .frame(height: 3)
                             )
                     }
                 }
@@ -78,7 +74,7 @@ struct FretView: View {
                         let gridHeight = proxy.size.height/5
                         Color.black
                             .clipShape(Capsule())
-                            .frame(width: proxy.size.width*1.3, height: proxy.size.height*0.08)
+                            .frame(width: proxy.size.width*1.2, height: min(proxy.size.width, proxy.size.height)*0.1)
                             .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
                     }
                 }
