@@ -1,13 +1,13 @@
 //
-//  Fretboard.swift
-//  Fretboard
+//  FretView.swift
+//  FretView
 //
 //  Created by Huong Do on 23/01/2021.
 //
 
 import SwiftUI
 
-struct Fretboard: View {
+struct FretView: View {
     let fingers: [Int]
     let strings: [Int]
     let barres: [Int]
@@ -101,9 +101,9 @@ struct Fretboard: View {
     }
 }
 
-struct Fretboard_Previews: PreviewProvider {
+struct FretView_Previews: PreviewProvider {
     static var previews: some View {
-        Fretboard(fingers: [1, 3, 4, 2, 1, 1],
+        FretView(fingers: [1, 3, 4, 2, 1, 1],
                  strings: [1, 3, 3, 2, 1, 1],
                  barres: [1])
             .frame(width: 100, height: 200)
