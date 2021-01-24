@@ -15,12 +15,15 @@ struct FretView: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                VStack(spacing: proxy.size.height/5) {
-                    ForEach(0...5, id: \.self) { index in
-                        let stringColor: Color = (index > 0 && index < 5) ? .gray : .black
+                let gridWidth = proxy.size.width / 7
+                let gridHeight = proxy.size.height / 7
+                
+                VStack(spacing: gridHeight) {
+                    ForEach(0..<strings.count, id: \.self) { index in
+                        let stringColor: Color = (index > 0 && index < strings.count) ? .gray : .black
                         let overlayColor: Color = (index == 0) ? .black : .clear
                         stringColor
-                            .frame(height: 1)
+                            .frame(width: gridWidth*CGFloat(strings.count-1) + CGFloat(strings.count), height: 1)
                             .overlay(
                                 overlayColor
                                     .frame(height: 3)
@@ -28,7 +31,7 @@ struct FretView: View {
                     }
                 }
                 
-                HStack(spacing: proxy.size.width/5) {
+                HStack(spacing: gridWidth) {
                     ForEach(strings, id: \.self) { s in
                         Group {
                             if s >= 0 {
@@ -37,7 +40,7 @@ struct FretView: View {
                                 Color.gray
                             }
                         }
-                        .frame(width: 1)
+                        .frame(width: 1, height: gridHeight*CGFloat(strings.count-1) + CGFloat(strings.count))
                     }
                 }
                 
@@ -48,38 +51,36 @@ struct FretView: View {
                         if shouldShowFingers {
                             Color.black
                                 .clipShape(Circle())
-                                .padding(min(proxy.size.width, proxy.size.height)*0.02)
+                                .padding(gridWidth*0.1)
                         } else if strings[index] < 0 {
                             Text("x")
-                                .font(.system(size: proxy.size.width/8))
+                                .font(.system(size: proxy.size.width/10))
                         }
                     }
-                    .frame(width: proxy.size.width/5, height: proxy.size.height/5)
-                    .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5)))
+                    .frame(width: gridWidth, height: gridHeight)
+                    .offset(calculateOffset(index: index, fretSize: CGSize(width: gridWidth, height: gridHeight)))
                 
                     Group {
                         if shouldShowFingers {
                             Text("\(fingers[index])")
-                                .font(.system(size: proxy.size.width/8))
+                                .font(.system(size: proxy.size.width/10))
                         }
                     }
-                    .frame(width: proxy.size.width/5, height: proxy.size.height/5)
-                    .offset(calculateOffset(index: index, fretSize: CGSize(width: proxy.size.width/5, height: proxy.size.height/5), isNumber: true))
+                    .frame(width: gridWidth, height: gridHeight)
+                    .offset(calculateOffset(index: index, fretSize: CGSize(width: gridWidth, height: gridHeight), isNumber: true))
+                }
+                
+                Group {
+                    if let bar = barres.first {
+                        Color.black
+                            .clipShape(Capsule())
+                            .frame(width: proxy.size.width*0.9, height: gridHeight*0.3)
+                            .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
+
+                    }
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
-            .overlay(
-                Group {
-                    if let bar = barres.first {
-                        let gridHeight = proxy.size.height/5
-                        Color.black
-                            .clipShape(Capsule())
-                            .frame(width: proxy.size.width*1.2, height: proxy.size.height*0.08)
-                            .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
-                            
-                    }
-                }
-            )
         }
         
     }
