@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Fretboard",
+        "repositoryURL": "https://github.com/itsmeichigo/Fretboard.git",
+        "state": {
+          "branch": null,
+          "revision": "0a55979a0195f978a9b2a6a358b75e874894b20a",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
