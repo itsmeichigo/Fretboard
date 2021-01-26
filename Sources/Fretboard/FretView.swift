@@ -7,77 +7,49 @@
 
 import SwiftUI
 
-struct FretView: View {
+public struct FretView: View {
     let fingers: [Int]
     let strings: [Int]
     let barres: [Int]
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { proxy in
             ZStack {
-                let gridWidth = proxy.size.width / 7
-                let gridHeight = proxy.size.height / 7
-                
-                VStack(spacing: gridHeight) {
-                    ForEach(0..<strings.count, id: \.self) { index in
-                        let stringColor: Color = (index > 0 && index < strings.count) ? .gray : .primary
-                        let overlayColor: Color = (index == 0) ? .primary : .clear
-                        stringColor
-                            .frame(width: gridWidth*CGFloat(strings.count-1) + CGFloat(strings.count), height: 1)
-                            .overlay(
-                                overlayColor
-                                    .frame(height: 3)
-                            )
-                    }
-                }
-                
-                HStack(spacing: gridWidth) {
-                    ForEach(strings, id: \.self) { s in
-                        Group {
-                            if s >= 0 {
-                                Color.primary
-                            } else {
-                                Color.gray
-                            }
-                        }
-                        .frame(width: 1, height: gridHeight*CGFloat(strings.count-1) + CGFloat(strings.count))
-                    }
-                }
+                setupStrings(with: proxy)
+                setupFret(with: proxy)
                 
                 ForEach(0..<strings.count, id: \.self) { index in
-                    let shouldShowFingers = (fingers[index] > 0 && barres.isEmpty) || (!barres.isEmpty && fingers[index] > barres.first!)
-
                     Group {
-                        if shouldShowFingers {
-                            Color.primary
-                                .clipShape(Circle())
-                                .padding(gridWidth*0.1)
-                        } else if strings[index] < 0 {
-                            Text("x")
-                                .foregroundColor(.primary)
-                                .font(.system(size: proxy.size.width/10))
+                        Group {
+                            if shouldShowFingers(for: index) {
+                                Color.primary
+                                    .clipShape(Circle())
+                                    .padding((proxy.size.width/7)*0.1)
+                            } else if strings[index] < 0 {
+                                Text("x")
+                                    .foregroundColor(.primary)
+                                    .font(.system(size: proxy.size.width/10))
+                            }
                         }
-                    }
-                    .frame(width: gridWidth, height: gridHeight)
-                    .offset(calculateOffset(index: index, fretSize: CGSize(width: gridWidth, height: gridHeight)))
-                
-                    Group {
-                        if shouldShowFingers {
+                        .frame(width: proxy.size.width/7, height: proxy.size.height/7)
+                        .offset(calculateOffset(index: index, gridSize: CGSize(width: proxy.size.width/7, height: proxy.size.height/7)))
+                    
+                        if shouldShowFingers(for: index) {
                             Text("\(fingers[index])")
                                 .foregroundColor(.primary)
                                 .font(.system(size: proxy.size.width/10))
+                                .frame(width: proxy.size.width/7, height: proxy.size.height/7)
+                                .offset(calculateOffset(index: index, gridSize: CGSize(width: proxy.size.width/7, height: proxy.size.height/7), isNumber: true))
                         }
                     }
-                    .frame(width: gridWidth, height: gridHeight)
-                    .offset(calculateOffset(index: index, fretSize: CGSize(width: gridWidth, height: gridHeight), isNumber: true))
                 }
                 
                 Group {
                     if let bar = barres.first {
                         Color.primary
                             .clipShape(Capsule())
-                            .frame(width: proxy.size.width*0.9, height: gridHeight*0.3)
-                            .offset(CGSize(width: 0, height: gridHeight * CGFloat(bar - 3) + CGFloat(bar - 3)))
+                            .frame(width: proxy.size.width*0.9, height: (proxy.size.height/7)*0.3)
+                            .offset(CGSize(width: 0, height: (proxy.size.height/7) * CGFloat(bar - 3) + CGFloat(bar - 3)))
 
                     }
                 }
@@ -87,14 +59,58 @@ struct FretView: View {
         
     }
     
-    private func calculateOffset(index: Int, fretSize: CGSize, isNumber: Bool = false) -> CGSize {
-        let xOffset = fretSize.width * (CGFloat(index) - 2.5) + (CGFloat(index) - 2.5)
+    private func setupStrings(with proxy: GeometryProxy) -> some View {
+        VStack(spacing: proxy.size.height/7) {
+            ForEach(0..<strings.count, id: \.self) { index in
+                Group {
+                    if index > 0 && index < strings.count {
+                        Color.gray
+                    } else {
+                        Color.primary
+                    }
+                }
+                .frame(width: (proxy.size.width/7) * CGFloat(strings.count-1) + CGFloat(strings.count), height: 1)
+                .overlay(
+                    Group {
+                        if index == 0 {
+                            Color.primary
+                        } else {
+                            Color.clear
+                        }
+                    }
+                    .frame(height: 3)
+                )
+            }
+        }
+    }
+    
+    private func setupFret(with proxy: GeometryProxy) -> some View {
+        HStack(spacing: proxy.size.width/7) {
+            ForEach(strings, id: \.self) { s in
+                Group {
+                    if s >= 0 {
+                        Color.primary
+                    } else {
+                        Color.gray
+                    }
+                }
+                .frame(width: 1, height: (proxy.size.height/7) * CGFloat(strings.count-1) + CGFloat(strings.count))
+            }
+        }
+    }
+    
+    private func shouldShowFingers(for index: Int) -> Bool {
+        return (fingers[index] > 0 && barres.isEmpty) || (!barres.isEmpty && fingers[index] > barres.first!)
+    }
+    
+    private func calculateOffset(index: Int, gridSize: CGSize, isNumber: Bool = false) -> CGSize {
+        let xOffset = gridSize.width * (CGFloat(index) - 2.5) + (CGFloat(index) - 2.5)
         if isNumber {
-            let yOffset = fretSize.height * 3
+            let yOffset = gridSize.height * 3
             return CGSize(width: xOffset, height: yOffset)
         } else {
             let position = strings[index]
-            let yOffset = fretSize.height * CGFloat(max(position, 0) - 3) + CGFloat(position - 3)
+            let yOffset = gridSize.height * CGFloat(max(position, 0) - 3) + CGFloat(position - 3)
             return CGSize(width: xOffset, height: yOffset)
         }
         
