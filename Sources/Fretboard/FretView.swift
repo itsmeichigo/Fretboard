@@ -65,7 +65,7 @@ public struct FretView: View {
                         Text("\(baseFret)fr")
                             .foregroundColor(.primary)
                             .font(.system(size: proxy.size.width/10))
-                            .frame(width: proxy.size.width/7, height: proxy.size.height/7)
+                            .frame(height: proxy.size.height/7)
                             .offset(CGSize(width: 0, height: -(proxy.size.height/7) * 3.0 - 3))
                     }
                 }
@@ -137,12 +137,17 @@ struct FretView_Previews: PreviewProvider {
     
     static let fAug = GuitarChord(key: .f, baseFret: 8, barres: [], frets: [-1, 1, -1, 3, 3, 2], suffix: .aug, fingers: [0, 1, 0, 3, 4, 2])
     
+    static let bbM9 = GuitarChord(key: .bFlat, baseFret: 11, barres: [], frets: [-1, 3, 1, 3, 3, -1], suffix: .majorNine, fingers: [0, 2, 1, 3, 4, 0])
+    
     static var previews: some View {
         Group {
             FretView(chord: fMajor)
                 .frame(width: 100, height: 200)
             
             FretView(chord: fAug)
+                .frame(width: 100, height: 200)
+            
+            FretView(chord: bbM9)
                 .frame(width: 100, height: 200)
         }
         
