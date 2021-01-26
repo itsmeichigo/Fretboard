@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GuitarChord: Decodable {
+public struct GuitarChord: Decodable, Hashable, Equatable {
     public let key: Key
     public let baseFret: Int
     public let barres: [Int]
