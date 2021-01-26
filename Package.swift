@@ -17,7 +17,10 @@ let package = Package(
     targets: [
         .target(
             name: "Fretboard",
-            dependencies: []),
+            dependencies: [],
+            resources: [
+                .process("Resources")
+            ]),
         .testTarget(
             name: "FretboardTests",
             dependencies: ["Fretboard"]),

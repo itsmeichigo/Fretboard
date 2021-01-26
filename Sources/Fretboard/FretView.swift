@@ -11,18 +11,20 @@ public struct FretView: View {
     let fingers: [Int]
     let strings: [Int]
     let barres: [Int]
+    let baseFret: Int
     
-    public init(fingers: [Int], strings: [Int], barres: [Int]) {
-        self.fingers = fingers
-        self.strings = strings
-        self.barres = barres
+    public init(chord: GuitarChord) {
+        self.fingers = chord.fingers
+        self.strings = chord.frets
+        self.barres = chord.barres
+        self.baseFret = chord.baseFret
     }
     
     public var body: some View {
         GeometryReader { proxy in
             ZStack {
-                setupStrings(with: proxy)
                 setupFret(with: proxy)
+                setupStrings(with: proxy)
                 
                 ForEach(0..<strings.count, id: \.self) { index in
                     Group {
@@ -33,11 +35,11 @@ public struct FretView: View {
                                     .padding((proxy.size.width/7)*0.1)
                             } else if strings[index] < 0 {
                                 Text("x")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.gray)
                                     .font(.system(size: proxy.size.width/10))
                             }
                         }
-                        .frame(width: proxy.size.width/7, height: proxy.size.height/7)
+                        .frame(width: proxy.size.width/7, height: proxy.size.height/7, alignment: strings[index] < 0 ? .bottom : .center)
                         .offset(calculateOffset(index: index, gridSize: CGSize(width: proxy.size.width/7, height: proxy.size.height/7)))
                     
                         if shouldShowFingers(for: index) {
@@ -58,11 +60,18 @@ public struct FretView: View {
                             .offset(CGSize(width: 0, height: (proxy.size.height/7) * CGFloat(bar - 3) + CGFloat(bar - 3)))
 
                     }
+                    
+                    if baseFret > 1 {
+                        Text("\(baseFret)fr")
+                            .foregroundColor(.primary)
+                            .font(.system(size: proxy.size.width/10))
+                            .frame(width: proxy.size.width/7, height: proxy.size.height/7)
+                            .offset(CGSize(width: 0, height: -(proxy.size.height/7) * 3.0 - 3))
+                    }
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        
     }
     
     private func setupStrings(with proxy: GeometryProxy) -> some View {
@@ -116,7 +125,7 @@ public struct FretView: View {
             return CGSize(width: xOffset, height: yOffset)
         } else {
             let position = strings[index]
-            let yOffset = gridSize.height * CGFloat(max(position, 0) - 3) + CGFloat(position - 3)
+            let yOffset = gridSize.height * CGFloat(max(position, 0) - 3) + CGFloat(max(position, 0) - 3)
             return CGSize(width: xOffset, height: yOffset)
         }
         
@@ -124,10 +133,18 @@ public struct FretView: View {
 }
 
 struct FretView_Previews: PreviewProvider {
+    static let fMajor = GuitarChord(key: .f, baseFret: 1, barres: [1], frets: [1, 3, 3, 2, 1, 1], suffix: .major, fingers: [1, 3, 4, 2, 1, 1])
+    
+    static let fAug = GuitarChord(key: .f, baseFret: 8, barres: [], frets: [-1, 1, -1, 3, 3, 2], suffix: .aug, fingers: [0, 1, 0, 3, 4, 2])
+    
     static var previews: some View {
-        FretView(fingers: [1, 3, 4, 2, 1, 1],
-                 strings: [1, 3, 3, 2, 1, 1],
-                 barres: [1])
-            .frame(width: 100, height: 200)
+        Group {
+            FretView(chord: fMajor)
+                .frame(width: 100, height: 200)
+            
+            FretView(chord: fAug)
+                .frame(width: 100, height: 200)
+        }
+        
     }
 }
