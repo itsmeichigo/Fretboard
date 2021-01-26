@@ -8,9 +8,9 @@
 import SwiftUI
 
 public struct FretView: View {
-    let fingers: [Int]
-    let strings: [Int]
-    let barres: [Int]
+    public let fingers: [Int]
+    public let strings: [Int]
+    public let barres: [Int]
     
     public var body: some View {
         GeometryReader { proxy in
