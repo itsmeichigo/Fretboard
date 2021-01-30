@@ -23,7 +23,7 @@ Add https://github.com/itsmeichigo/Fretboard.git as the source and you're good t
 Copy contents from Sources folder to your project.
 
 ## Usage
-Get your desired instrument:
+Get your desired instruments:
 ```Swift
 let guitar = Instrument.guitar
 let ukulele = Instrument.ukulele
@@ -38,7 +38,7 @@ let cMajorUkuPositions = Instrument.ukulele.findChordPositions(key: "C", suffix:
 Display any chord by sending it to `FretboardView`:
 
 ```Swift
-FretboardView(position: dAug9Positions)
+FretboardView(position: dAug9Position)
     .frame(width: 100, height: 200)
 ```
 
