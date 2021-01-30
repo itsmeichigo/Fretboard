@@ -22,8 +22,14 @@ extension Instrument {
     }
     
     static func instrument(from resource: String) -> Instrument {
+        #if SWIFT_PACKAGE
         let url = Bundle.module.url(forResource: resource, withExtension: "json")
+        #else
+        let url = Bundle(for: BundleToken.self).url(forResource: resource, withExtension: "json")
+        #endif
         let data = try! Data(contentsOf: url!)
         return try! JSONDecoder().decode(Instrument.self, from: data)
     }
 }
+
+private class BundleToken {}
