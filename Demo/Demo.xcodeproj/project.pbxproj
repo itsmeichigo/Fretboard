@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,11 @@
 		DE0B4A7725BFB811007F4A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE0B4A7625BFB811007F4A4B /* Assets.xcassets */; };
 		DE0B4A7A25BFB811007F4A4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE0B4A7925BFB811007F4A4B /* Preview Assets.xcassets */; };
 		DE0B4A7D25BFB811007F4A4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0B4A7B25BFB811007F4A4B /* Main.storyboard */; };
-		DE0B4A8C25BFBC40007F4A4B /* Fretboard in Frameworks */ = {isa = PBXBuildFile; productRef = DE0B4A8B25BFBC40007F4A4B /* Fretboard */; };
+		DECFEE1C25C55359001EE38B /* guitar.json in Resources */ = {isa = PBXBuildFile; fileRef = DECFEE1625C55359001EE38B /* guitar.json */; };
+		DECFEE1D25C55359001EE38B /* ukulele.json in Resources */ = {isa = PBXBuildFile; fileRef = DECFEE1725C55359001EE38B /* ukulele.json */; };
+		DECFEE1E25C55359001EE38B /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFEE1925C55359001EE38B /* Instrument.swift */; };
+		DECFEE1F25C55359001EE38B /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFEE1A25C55359001EE38B /* Chord.swift */; };
+		DECFEE2025C55359001EE38B /* FretboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFEE1B25C55359001EE38B /* FretboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		DE0B4A7C25BFB811007F4A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE0B4A7E25BFB811007F4A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE0B4A7F25BFB811007F4A4B /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		DECFEE1625C55359001EE38B /* guitar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guitar.json; sourceTree = "<group>"; };
+		DECFEE1725C55359001EE38B /* ukulele.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ukulele.json; sourceTree = "<group>"; };
+		DECFEE1925C55359001EE38B /* Instrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		DECFEE1A25C55359001EE38B /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		DECFEE1B25C55359001EE38B /* FretboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FretboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE0B4A8C25BFBC40007F4A4B /* Fretboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +65,7 @@
 		DE0B4A7125BFB80E007F4A4B /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				DECFEE1425C55359001EE38B /* Fretboard */,
 				DE0B4A7225BFB80E007F4A4B /* AppDelegate.swift */,
 				DE0B4A7425BFB80E007F4A4B /* ContentView.swift */,
 				DE0B4A7625BFB811007F4A4B /* Assets.xcassets */,
@@ -76,6 +85,35 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DECFEE1425C55359001EE38B /* Fretboard */ = {
+			isa = PBXGroup;
+			children = (
+				DECFEE1525C55359001EE38B /* Resources */,
+				DECFEE1825C55359001EE38B /* Models */,
+				DECFEE1B25C55359001EE38B /* FretboardView.swift */,
+			);
+			name = Fretboard;
+			path = ../../Sources/Fretboard;
+			sourceTree = "<group>";
+		};
+		DECFEE1525C55359001EE38B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DECFEE1625C55359001EE38B /* guitar.json */,
+				DECFEE1725C55359001EE38B /* ukulele.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DECFEE1825C55359001EE38B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DECFEE1925C55359001EE38B /* Instrument.swift */,
+				DECFEE1A25C55359001EE38B /* Chord.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,7 +131,6 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				DE0B4A8B25BFBC40007F4A4B /* Fretboard */,
 			);
 			productName = Demo;
 			productReference = DE0B4A6F25BFB80E007F4A4B /* Demo.app */;
@@ -123,7 +160,6 @@
 			);
 			mainGroup = DE0B4A6625BFB80E007F4A4B;
 			packageReferences = (
-				DE0B4A8A25BFBC40007F4A4B /* XCRemoteSwiftPackageReference "Fretboard" */,
 			);
 			productRefGroup = DE0B4A7025BFB80E007F4A4B /* Products */;
 			projectDirPath = "";
@@ -142,6 +178,8 @@
 				DE0B4A7D25BFB811007F4A4B /* Main.storyboard in Resources */,
 				DE0B4A7A25BFB811007F4A4B /* Preview Assets.xcassets in Resources */,
 				DE0B4A7725BFB811007F4A4B /* Assets.xcassets in Resources */,
+				DECFEE1D25C55359001EE38B /* ukulele.json in Resources */,
+				DECFEE1C25C55359001EE38B /* guitar.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE0B4A7525BFB80E007F4A4B /* ContentView.swift in Sources */,
+				DECFEE1E25C55359001EE38B /* Instrument.swift in Sources */,
+				DECFEE1F25C55359001EE38B /* Chord.swift in Sources */,
 				DE0B4A7325BFB80E007F4A4B /* AppDelegate.swift in Sources */,
+				DECFEE2025C55359001EE38B /* FretboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,25 +395,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DE0B4A8A25BFBC40007F4A4B /* XCRemoteSwiftPackageReference "Fretboard" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/itsmeichigo/Fretboard.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DE0B4A8B25BFBC40007F4A4B /* Fretboard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE0B4A8A25BFBC40007F4A4B /* XCRemoteSwiftPackageReference "Fretboard" */;
-			productName = Fretboard;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE0B4A6725BFB80E007F4A4B /* Project object */;
 }

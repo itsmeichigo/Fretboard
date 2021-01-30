@@ -6,53 +6,50 @@
 //
 
 import SwiftUI
-import Fretboard
 
 struct ContentView: View {
-    @State private var selectedKey: GuitarChord.Key = .c
-    @State private var selectedSuffix: GuitarChord.Suffix = .major
-    
-    private let allChords: [GuitarChord]
-    private let allKeys: [GuitarChord.Key]
-    private let allSuffixes: [GuitarChord.Suffix]
+    @State private var selectedInstrument: Instrument = .guitar
+    @State private var selectedKey: String = "C"
+    @State private var selectedSuffix: String = "major"
+
+    private let instruments = [Instrument.guitar, Instrument.ukulele]
     
     private var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 4)
-    private var foundChords: [GuitarChord] {
-        allChords.matching(key: selectedKey)
-            .matching(suffix: selectedSuffix)
-    }
-    
-    init() {
-        allChords = GuitarChord.all
-        allKeys = Array(Set(allChords.keys))
-        allSuffixes = Array(Set(allChords.suffixes))
+    private var foundChords: [Chord.Position] {
+        selectedInstrument.findChordPositions(key: selectedKey, suffix: selectedSuffix)
     }
     
     var body: some View {
         ScrollView {
             VStack {
-                Text("Guitar Chord Lookup 🎸")
+                Text("Chord Lookup 🎸")
                     .font(.largeTitle)
                     .padding()
                 
                 HStack {
-                    Picker("Select key", selection: $selectedKey) {
-                        ForEach(allKeys, id: \.self) {
-                            Text($0.rawValue)
+                    Picker("Instrument", selection: $selectedInstrument) {
+                        ForEach(instruments, id: \.self) {
+                            Text($0.name.capitalized(with: nil))
                         }
                     }
                     
-                    Picker("Select suffix", selection: $selectedSuffix) {
-                        ForEach(allSuffixes, id: \.self) {
-                            Text($0.rawValue)
+                    Picker("Key", selection: $selectedKey) {
+                        ForEach(selectedInstrument.keys, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    
+                    Picker("Suffix", selection: $selectedSuffix) {
+                        ForEach(selectedInstrument.suffixes, id: \.self) {
+                            Text($0)
                         }
                     }
                 }
                 
                 LazyVGrid(columns: columns) {
-                    ForEach(foundChords, id: \.self) { chord in
-                        FretView(chord: chord)
+                    ForEach(foundChords, id: \.self) { position in
+                        FretboardView(position: position)
                             .frame(width: 100, height: 200)
                     }
                 }
@@ -71,3 +68,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
