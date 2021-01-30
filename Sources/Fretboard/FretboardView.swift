@@ -1,13 +1,13 @@
 //
-//  FretView.swift
-//  FretView
+//  FretboardView.swift
+//  FretboardView
 //
 //  Created by Huong Do on 23/01/2021.
 //
 
 import SwiftUI
 
-public struct FretView: View {
+public struct FretboardView: View {
     let fingers: [Int]
     let strings: [Int]
     let barres: [Int]
@@ -15,11 +15,11 @@ public struct FretView: View {
     
     let fretLineCount: Int = 6
         
-    public init(chord: Chord) {
-        self.fingers = chord.fingers
-        self.strings = chord.frets
-        self.barres = chord.barres
-        self.baseFret = chord.baseFret
+    public init(position: Chord.Position) {
+        self.fingers = position.fingers
+        self.strings = position.frets
+        self.barres = position.barres
+        self.baseFret = position.baseFret
     }
     
     public var body: some View {
@@ -39,11 +39,15 @@ public struct FretView: View {
                                 Text("x")
                                     .foregroundColor(.gray)
                                     .font(.system(size: proxy.size.width/10))
+                            } else {
+                                Text("○")
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: proxy.size.width/10))
                             }
                         }
                         .frame(width: gridWidth(for: proxy),
                                height: gridHeight(for: proxy),
-                               alignment: strings[index] < 0 ? .bottom : .center)
+                               alignment: strings[index] <= 0 ? .bottom : .center)
                         .offset(calculateOffset(index: index, proxy: proxy))
                     
                         if shouldShowFingers(for: index) {
@@ -150,38 +154,18 @@ public struct FretView: View {
     }
 }
 
-struct FretView_Previews: PreviewProvider {
-    struct Ukulele: Chord {
-        let key: Key
-        let baseFret: Int
-        let barres: [Int]
-        let frets: [Int]
-        let suffix: Suffix
-        let fingers: [Int]
-    }
+struct FretboardView_Previews: PreviewProvider {
     
-    static let fMajor = GuitarChord(key: .f, baseFret: 1, barres: [1], frets: [1, 3, 3, 2, 1, 1], suffix: .major, fingers: [1, 3, 4, 2, 1, 1])
-    
-    static let fAug = GuitarChord(key: .f, baseFret: 8, barres: [], frets: [-1, 1, -1, 3, 3, 2], suffix: .aug, fingers: [0, 1, 0, 3, 4, 2])
-    
-    static let bbM9 = GuitarChord(key: .bFlat, baseFret: 11, barres: [], frets: [-1, 3, 1, 3, 3, -1], suffix: .majorNine, fingers: [0, 2, 1, 3, 4, 0])
-    
-    static let ukuC = Ukulele(key: .c, baseFret: 1, barres: [], frets: [0, 0, 0, 3], suffix: .major, fingers: [0, 0, 0, 3])
+    static let fMajorChords = Instrument.guitar.findChordPositions(key: "F", suffix: "major")
+
+    static let fMajorUkuChords = Instrument.ukulele.findChordPositions(key: "F", suffix: "major")
     
     static var previews: some View {
         Group {
-            FretView(chord: fMajor)
-                .frame(width: 100, height: 200)
-            
-            FretView(chord: fAug)
-                .frame(width: 100, height: 200)
-            
-            FretView(chord: bbM9)
-                .frame(width: 100, height: 200)
-            
-            FretView(chord: ukuC)
-                .frame(width: 100, height: 200)
+            ForEach(fMajorUkuChords, id: \.self) {
+                FretboardView(position: $0)
+                    .frame(width: 100, height: 200)
+            }
         }
-        
     }
 }
