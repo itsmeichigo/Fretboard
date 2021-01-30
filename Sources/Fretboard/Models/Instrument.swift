@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Instrument: Decodable {
+public struct Instrument: Decodable, Hashable {
     public let name: String
     public let keys: [String]
     public let suffixes: [String]
