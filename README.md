@@ -2,7 +2,7 @@
 
 ![Logo](https://github.com/itsmeichigo/Fretboard/blob/main/logo.png?raw=true)
 
-Lightweight guitar chords in SwiftUI. 
+Lightweight guitar & ukulele chords in SwiftUI. 
 
 Supports iOS 13 and MacOS 10.15 upwards.
 
