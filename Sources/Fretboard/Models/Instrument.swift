@@ -8,6 +8,7 @@
 import Foundation
 
 public struct Instrument: Decodable {
+    public let name: String
     public let keys: [String]
     public let suffixes: [String]
     public let chords: [String: [Chord]]

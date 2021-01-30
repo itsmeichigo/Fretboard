@@ -1,10 +1,5 @@
 {
-   "main": {
-       "strings": 4,
-       "fretsOnChord": 4,
-       "name": "ukulele",
-       "numberOfChords": 2114
-   },
+   "name": "ukulele",
    "tunings": {
        "standard": [ "G4", "C4", "E4", "A4" ]
    },

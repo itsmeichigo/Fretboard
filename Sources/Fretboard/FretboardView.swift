@@ -39,7 +39,7 @@ public struct FretboardView: View {
                                 Text("x")
                                     .foregroundColor(.gray)
                                     .font(.system(size: proxy.size.width/10))
-                            } else {
+                            } else if strings[index] == 0 {
                                 Text("○")
                                     .foregroundColor(.gray)
                                     .font(.system(size: proxy.size.width/10))
@@ -158,11 +158,11 @@ struct FretboardView_Previews: PreviewProvider {
     
     static let fMajorChords = Instrument.guitar.findChordPositions(key: "F", suffix: "major")
 
-    static let fMajorUkuChords = Instrument.ukulele.findChordPositions(key: "F", suffix: "major")
+    static let cMajorUkuChords = Instrument.ukulele.findChordPositions(key: "C", suffix: "major")
     
     static var previews: some View {
         Group {
-            ForEach(fMajorUkuChords, id: \.self) {
+            ForEach(cMajorUkuChords, id: \.self) {
                 FretboardView(position: $0)
                     .frame(width: 100, height: 200)
             }
