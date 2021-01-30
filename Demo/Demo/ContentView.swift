@@ -11,11 +11,12 @@ struct ContentView: View {
     @State private var selectedInstrument: Instrument = .guitar
     @State private var selectedKey: String = "C"
     @State private var selectedSuffix: String = "major"
+    
+    private var columns: [GridItem] =
+                 Array(repeating: .init(.flexible()), count: 4)
 
     private let instruments = [Instrument.guitar, Instrument.ukulele]
     
-    private var columns: [GridItem] =
-             Array(repeating: .init(.flexible()), count: 4)
     private var foundChords: [Chord.Position] {
         selectedInstrument.findChordPositions(key: selectedKey, suffix: selectedSuffix)
     }
@@ -23,7 +24,11 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Chord Lookup 🎸")
+                Image("logo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                
+                Text("Chord Lookup")
                     .font(.largeTitle)
                     .padding()
                 
@@ -57,7 +62,7 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .frame(width: 500, height: 300)
+        .frame(width: 500, height: 400)
         .padding()
     }
 }
