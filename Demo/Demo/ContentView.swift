@@ -9,14 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedInstrument: Instrument = .guitar
-    @State private var selectedKey: String = "C"
-    @State private var selectedSuffix: String = "major"
+    @State private var selectedKey: String = "D"
+    @State private var selectedSuffix: String = "aug9"
     
-    private var columns: [GridItem] =
-                 Array(repeating: .init(.flexible()), count: 4)
-
     private let instruments = [Instrument.guitar, Instrument.ukulele]
-    
     private var foundChords: [Chord.Position] {
         selectedInstrument.findChordPositions(key: selectedKey, suffix: selectedSuffix)
     }
@@ -52,7 +48,7 @@ struct ContentView: View {
                     }
                 }
                 
-                LazyVGrid(columns: columns) {
+                HStack(spacing: 16) {
                     ForEach(foundChords, id: \.self) { position in
                         FretboardView(position: position)
                             .frame(width: 100, height: 200)
