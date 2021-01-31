@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedInstrument: Instrument = .guitar
-    @State private var selectedKey: String = "D"
-    @State private var selectedSuffix: String = "aug9"
+    @State private var selectedKey: String = "C"
+    @State private var selectedSuffix: String = "major"
     
     private let instruments = [Instrument.guitar, Instrument.ukulele]
     private var foundChords: [Chord.Position] {
