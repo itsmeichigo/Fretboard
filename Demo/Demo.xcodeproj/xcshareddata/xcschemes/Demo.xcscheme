@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DE0B4A6E25BFB80E007F4A4B"
-               BuildableName = "Demo.app"
+               BuildableName = "Fretboard.app"
                BlueprintName = "Demo"
                ReferencedContainer = "container:Demo.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE0B4A6E25BFB80E007F4A4B"
-            BuildableName = "Demo.app"
+            BuildableName = "Fretboard.app"
             BlueprintName = "Demo"
             ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE0B4A6E25BFB80E007F4A4B"
-            BuildableName = "Demo.app"
+            BuildableName = "Fretboard.app"
             BlueprintName = "Demo"
             ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
